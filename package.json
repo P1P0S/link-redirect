@@ -1,0 +1,26 @@
+{
+  "name": "monorepo-mongoose",
+  "version": "1.0.0",
+  "description": "to learn",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/P1P0S/monorepo-mongoose.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/P1P0S/monorepo-mongoose/issues"
+  },
+  "homepage": "https://github.com/P1P0S/monorepo-mongoose#readme",
+  "devDependencies": {
+    "eslint": "^8.18.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.1.0",
+    "prettier": "^2.7.1"
+  }
+}
