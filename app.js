@@ -13,23 +13,6 @@ const linkSchema = new mongoose.Schema({
 //(L)ink = model/collection, (l)ink = document
 const Link = mongoose.model("Link", linkSchema);
 
-//fictitious values
-let link = new Link({
-  title: "Pipos",
-  description: "Link para o youtube",
-  url: "https://youtube.com",
-});
-
-//insert values on db
-link
-  .save()
-  .then((doc) => {
-    console.log(doc);
-  })
-  .catch((err) => {
-    console.log(err);
-  });
-
 mongoose.connect("mongodb://localhost/links", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -43,8 +26,20 @@ db.on("error", () => {
 
 db.once("open", () => {
   console.log("Banco de dados carregado!");
-});
 
+  //find object in document on param request
+  app.get("/:title", async (req, res) => {
+    //get value after /
+    let title = req.params.title;
+    try {
+      let doc = await Link.findOne({ title });
+      console.log(doc);
+      res.redirect(doc.url);
+    } catch (error) {
+      res.send(error);
+    }
+  });
+});
 app.get("/", (req, res) => res.send("Hello World!"));
 
 app.listen(PORT, () => console.log(`App listen on port ${PORT}`));
