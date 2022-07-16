@@ -4,7 +4,7 @@ const linkController = require("../controllers/linkController");
 
 router.get("/:title", linkController.redirect);
 
-router.get("/", (req, res) => res.send("Hello World!"));
+router.get("/", (req, res) => res.render("index"));
 
 router.post(
   "/",
