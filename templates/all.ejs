@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>All links</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+
+    <% for(let i=0; i < links.length; i++){ %>
+    <div id="<%= links[i]._id%>">
+      <h2><%= links[i].title%></h2>
+      <div>
+        <%= links[i].description%>
+      </div>
+      <div>
+        <%= links[i].url%>
+      </div>
+    </div>
+    <% } %>
+
+  </body>
+</html>
