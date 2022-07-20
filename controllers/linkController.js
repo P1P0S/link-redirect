@@ -11,6 +11,15 @@ const redirect = async (req, res) => {
   }
 };
 
+const allLinks = async (req, res) => {
+  try {
+    let links = await Link.find({});
+    res.send(links);
+  } catch (error) {
+    res.send("Houve um erro");
+  }
+};
+
 const addLink = async (req, res) => {
   let link = new Link(req.body);
 
@@ -22,4 +31,4 @@ const addLink = async (req, res) => {
   }
 };
 
-module.exports = { redirect, addLink };
+module.exports = { redirect, addLink, allLinks };
