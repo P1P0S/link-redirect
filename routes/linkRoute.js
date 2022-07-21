@@ -14,4 +14,6 @@ router.post(
   linkController.addLink
 );
 
+router.delete("/:id", linkController.deleteLink);
+
 module.exports = router;
