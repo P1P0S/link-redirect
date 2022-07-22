@@ -16,8 +16,23 @@
       <div>
         <%= links[i].url%>
       </div>
+      <button type="button" onclick="deleteLink('<%= links[i]._id %>')">Delete</button>
     </div>
     <% } %>
 
+    <script>
+      function deleteLink(id){
+        fetch("/" + id, {method: "DELETE"}).then(res => {
+          if(res.status == 200) {
+            res.text().then(linkId => {
+              document.getElementById(id).remove()
+              })}else{
+                res.json().then(err => {
+                  console.log(err.message);
+            })
+          }
+        })
+      }
+    </script>
   </body>
 </html>
