@@ -39,7 +39,7 @@ const deleteLink = async (req, res) => {
   try {
     res.send(await Link.findByIdAndDelete(id));
   } catch (error) {
-    res.render(error);
+    res.status(404).send(error);
   }
 };
 
