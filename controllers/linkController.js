@@ -1,11 +1,15 @@
 const Link = require("../models/Link");
 
-const redirect = async (req, res) => {
+const redirect = async (req, res, next) => {
   let title = req.params.title;
   try {
     let doc = await Link.findOne({ title });
     console.log(doc);
-    res.redirect(doc.url);
+    if (doc) {
+      res.redirect(doc.url);
+    } else {
+      next();
+    }
   } catch (error) {
     res.send("Houve um erro");
   }
@@ -25,7 +29,7 @@ const addLink = async (req, res) => {
 
   try {
     await link.save();
-    res.send("Link adicionado com sucesso!");
+    res.redirect("/");
   } catch (error) {
     res.render("index", { error, body: req.body });
   }
@@ -38,7 +42,7 @@ const deleteLink = async (req, res) => {
   }
   try {
     await Link.findByIdAndDelete(id);
-    res.redirect("/all");
+    res.redirect("/");
   } catch (error) {
     res.status(404).send(error);
   }
