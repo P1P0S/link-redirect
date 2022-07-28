@@ -12,7 +12,7 @@
     <% for(let i=0; i < links.length; i++){ %>
     <div id="<%= links[i]._id%>">
       <form  method="POST" action="/?_method=DELETE">
-        <h2><%= links[i].title%></h2>
+        <h2><a href="<%= links[i]._id%>"><%= links[i].title%></a></h2>
         <div>
           <%= links[i].description%>
         </div>
