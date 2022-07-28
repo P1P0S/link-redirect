@@ -1,17 +1,17 @@
 const Link = require("../models/Link");
 
 const redirect = async (req, res, next) => {
-  let title = req.params.title;
+  let id = req.params.id;
   try {
-    let doc = await Link.findOne({ title });
-    console.log(doc);
-    if (doc) {
-      res.redirect(doc.url);
-    } else {
+    if (id == "add") {
+      console.log("pao");
       next();
+    } else {
+      let doc = await Link.findById(id);
+      res.redirect(doc.url);
     }
   } catch (error) {
-    res.send("Houve um erro");
+    res.send("Oops, an error has occurred!");
   }
 };
 
