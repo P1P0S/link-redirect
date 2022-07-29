@@ -12,12 +12,15 @@
     <% for(let i=0; i < links.length; i++){ %>
     <div id="<%= links[i]._id%>">
       <form  method="POST" action="/?_method=DELETE">
-        <h2><a href="<%= links[i]._id%>"><%= links[i].title%></a></h2>
+        <h2><a href="<%= links[i]._id%>" target="_blank"><%= links[i].title%></a></h2>
         <div>
           <%= links[i].description%>
         </div>
         <div>
           <%= links[i].url%>
+        </div>
+        <div>
+          clicks: <%= links[i].clicks%>
         </div>
         <input name="id" value="<%= links[i]._id%>" hidden>
         <button type="submit">Delete</button>

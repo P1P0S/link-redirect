@@ -4,10 +4,9 @@ const redirect = async (req, res, next) => {
   let id = req.params.id;
   try {
     if (id == "add") {
-      console.log("pao");
       next();
     } else {
-      let doc = await Link.findById(id);
+      let doc = await Link.findByIdAndUpdate(id, { $inc: { clicks: 1 } });
       res.redirect(doc.url);
     }
   } catch (error) {
