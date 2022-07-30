@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Redirection</title>
+    <title>Add link</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- CSS only -->
@@ -20,7 +20,9 @@
       </form>
 
     <% if (error) {%>
-      <h3><%= error.message %></h3>
+      <div class="alert alert-danger mt-3">
+        <strong>Error: </strong><%= error.message %>
+      </div>
     <% } %>
     </div>
   </body>

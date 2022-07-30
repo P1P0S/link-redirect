@@ -18,10 +18,12 @@
         <input class="mb-4" type="url" name="url" placeholder="URL" value="<%= body.url %>" required>
         <button class="btn btn-primary" type="submit">Save</button>
       </form>
-      
-      <% if (error) {%>
-        <h3><%= error.message %></h3>
-      <% } %>
+
+    <% if (error) {%>
+      <div class="alert alert-danger mt-3">
+        <strong>Error: </strong><%= error.message %>
+      </div>
+    <% } %>
     </div>
   </body>
 </html>
