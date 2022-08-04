@@ -58,17 +58,15 @@ const loadLink = async (req, res) => {
 };
 
 const editLink = async (req, res) => {
-  let link = {};
-  link.title = req.body.title;
-  link.description = req.body.description;
-  link.url = req.body.url;
-
   let id = req.params.id;
   if (!id) {
     id = req.body.id;
   }
+
+  let link = new Link(req.body, { _id: false });
+  console.log(link);
   try {
-    let doc = await Link.findByIdAndUpdate(id, link);
+    await Link.findByIdAndUpdate(id, link, { runValidators: true });
     res.redirect("/");
   } catch (error) {
     res.render("edit", { error, body: req.body });
